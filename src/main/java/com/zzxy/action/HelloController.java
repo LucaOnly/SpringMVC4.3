@@ -1,1 +1,49 @@
-package com.zzxy.action;import org.springframework.stereotype.Controller;import org.springframework.ui.ModelMap;import org.springframework.web.bind.annotation.PathVariable;import org.springframework.web.bind.annotation.RequestMapping;import org.springframework.web.bind.annotation.RequestMethod;import org.springframework.web.bind.annotation.RequestParam;import org.springframework.web.servlet.ModelAndView;@Controller@RequestMapping("/hello")public class HelloController {	/**	 * ²âÊÔ1£¬ºóÌ¨·µ»Ø²ÎÊı	 * @param model	 * @return	 */	@RequestMapping(value="/1" ,method = RequestMethod.GET)	public String printHello(ModelMap model) {		model.addAttribute("message", "url1: Hello Spring MVC Framework!");		return "hello";	}	/**	 * ²âÊÔ2£¬¿ÉÑ¡id²ÎÊı	 * @param id	 * @return	 */	@RequestMapping(value="/2")	public ModelAndView printId2(@RequestParam(value = "id", required = false) String id) {		ModelAndView model = new ModelAndView("hello");		model.addObject("message", "ÊäÈëµÄIDÎª£º" + id);		return model;	}		/**	 * ²âÊÔ3£¬¿ÉÑ¡id²ÎÊı	 * @param id	 * @return	 */	@RequestMapping(value="/3/{id}")	// ¶à²ÎÊıÇé¿ö£º@PathVariable(value = "id")	public ModelAndView printId3(@PathVariable String id) {		ModelAndView model = new ModelAndView();		model.setViewName("hello");		model.addObject("message", "ÊäÈëµÄPath IDÎª£º" + id);		return model;	}}
+package com.zzxy.action;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+@RequestMapping("/hello")
+public class HelloController {
+	/**
+	 * æµ‹è¯•1ï¼Œåå°è¿”å›å‚æ•°
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/1" ,method = RequestMethod.GET)
+	public String printHello(ModelMap model) {
+		model.addAttribute("message", "url1: Hello Spring MVC Framework!");
+		return "hello";
+	}
+	/**
+	 * æµ‹è¯•2ï¼Œå¯é€‰idå‚æ•°
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/2")
+	public ModelAndView printId2(@RequestParam(value = "id", required = false) String id) {
+		ModelAndView model = new ModelAndView("hello");
+		model.addObject("message", "è¾“å…¥çš„IDä¸ºï¼š" + id);
+		return model;
+	}
+	
+	/**
+	 * æµ‹è¯•3ï¼Œå¯é€‰idå‚æ•°
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/3/{id}")
+	// å¤šå‚æ•°æƒ…å†µï¼š@PathVariable(value = "id")
+	public ModelAndView printId3(@PathVariable String id) {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("hello");
+		model.addObject("message", "è¾“å…¥çš„Path IDä¸ºï¼š" + id);
+		return model;
+	}
+}

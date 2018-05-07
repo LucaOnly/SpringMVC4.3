@@ -40,7 +40,7 @@
 
   <build>
     <sourceDirectory>src</sourceDirectory>
-    <outputDirectory>${basedir}/WebContent/WEB-INF/classes</outputDirectory>
+   <!--  <outputDirectory>${basedir}/WebContent/WEB-INF/classes</outputDirectory> -->
     <defaultGoal>compile</defaultGoal>
     <plugins>
       <plugin>
